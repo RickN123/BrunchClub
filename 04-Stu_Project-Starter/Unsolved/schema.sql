@@ -1,7 +1,7 @@
 CREATE DATABASE brunchclub_db;
 USE brunchclub_db;
 
-CREATE TABLE parties
+CREATE TABLE events
 (
 	id int NOT NULL AUTO_INCREMENT,
 	venue varchar(255) NOT NULL,
