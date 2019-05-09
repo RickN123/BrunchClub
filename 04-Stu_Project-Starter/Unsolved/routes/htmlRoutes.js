@@ -6,7 +6,7 @@ module.exports = function(app) {
     db.Event.findAll({}).then(function(results) {
       res.render("index", {
         msg: "Welcome!",
-        event: results
+        Event: results
       });
     });
   });
@@ -15,7 +15,7 @@ module.exports = function(app) {
   app.get("/events/", function(req, res) {
     db.Event.findAll({}).then(function(results) {
       res.render("events", {
-        event: results
+        Event: results
       });
     });
   });
