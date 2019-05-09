@@ -2,24 +2,58 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+  // Get all Events
+  app.get("/api/events", function(req, res) {
+    db.Event.findAll({}).then(function(results) {
+      res.json(results);
     });
   });
 
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+  // Create a new Event
+  app.post("/api/events", function(req, res) {
+    db.Event.create({
+      venue: req.body.venue,
+      theme: req.body.theme,
+      date_time: req.body.date_time,
+      specials: req.body.specials,
+      address: req.body.address,
+      neighborhood: req.body.neighborhood,
+      food_type: req.body.food_type,
+
+      
+
+    }).then(function(results) {
+      res.json(results);
+
     });
+    
   });
 
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
+  // Delete an event by id
+  app.delete("/api/events/:id", function(req, res) {
+    db.Event.destroy({ where: { id: req.params.id } }).then(function(results) {
+      res.json(results);
     });
   });
-};
+  app.put("/api/events", function(req, res) {
+    db.Event.update({
+      venue: req.body.venue,
+      theme: req.body.theme,
+      date_time: req.body.date_time,
+      specials: req.body.specials,
+      address: req.body.address,
+      neighborhood: req.body.neighborhood,
+      food_type: req.body.food_type,
+    }, {
+      where: {id:req.body.id
+      }
+    
+      }).then(function(results) {
+      res.json(results);
+
+    });
+  });
+    
+  
+
+  }
