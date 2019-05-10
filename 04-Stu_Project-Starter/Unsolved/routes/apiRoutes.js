@@ -2,14 +2,14 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all Events
+//Get ALL Events
   app.get("/api/events", function(req, res) {
     db.Event.findAll({}).then(function(results) {
       res.json(results);
     });
   });
 
-  // Create a new Event
+//Create New Event
   app.post("/api/events", function(req, res) {
     db.Event.create({
       venue: req.body.venue,
@@ -19,22 +19,20 @@ module.exports = function(app) {
       address: req.body.address,
       neighborhood: req.body.neighborhood,
       food_type: req.body.food_type,
-
-      
-
     }).then(function(results) {
       res.json(results);
 
     });
-    
   });
 
-  // Delete an event by id
+//Delete Event by id
   app.delete("/api/events/:id", function(req, res) {
     db.Event.destroy({ where: { id: req.params.id } }).then(function(results) {
       res.json(results);
     });
   });
+
+//Update Event by id
   app.put("/api/events", function(req, res) {
     db.Event.update({
       venue: req.body.venue,
@@ -47,13 +45,10 @@ module.exports = function(app) {
     }, {
       where: {id:req.body.id
       }
-    
-      }).then(function(results) {
+    }).then(function(results) {
       res.json(results);
 
     });
   });
-    
-  
 
-  }
+};

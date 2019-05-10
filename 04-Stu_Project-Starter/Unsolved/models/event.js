@@ -1,3 +1,4 @@
+
 module.exports = function(sequelize, DataTypes) {
   var Event = sequelize.define("Event", {
     venue: DataTypes.STRING,
@@ -8,5 +9,7 @@ module.exports = function(sequelize, DataTypes) {
     neighborhood: DataTypes.STRING,
     food_type: DataTypes.STRING,
   });
+
   return Event;
+  
 };
