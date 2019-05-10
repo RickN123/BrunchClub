@@ -3,28 +3,27 @@
     <div class="col-8 offset-2">
       <div class="card mt-4">
         <div class="card-body">
-          <h5 class="card-title">Events</h5>
+          <h4 class="card-title">Events</h4>
+          <h5 class="add-link"><a href="/newevent">Add New Event</a></h5>
 
           {{#each Event}}
-          <p><strong>ID</strong>: {{id}}</p>
           <p>
-          <p>
-            <strong>Venue</strong>: {{venue}}</p>
-          <p>
-            <strong>Theme:</strong> {{theme}}</p>
-            <p>
-            <strong>Date and Time</strong>: {{date_time}}</p>
-            <p>
-            <strong>Specials</strong>: {{specials}}</p>
-            <p>
-            <strong>Address</strong>: {{address}}</p>
+          <p><strong>Restaurant/Venue: </strong><a href="events/{{id}}"> {{venue}} </a></p>
+          <p><strong>Theme: </strong>{{theme}}</p>
+          
+          <p><strong>Date/Time: </strong>{{date_time}}</p>
+          <hr>
+            {{!-- <strong>Date and Time</strong>: {{date_time}}</p>
+            <p> --}}
+            {{!-- <strong>Address</strong>: {{address}}</p>
             <p>
             <strong>Neighborhood</strong>: {{neighborhood}}</p>
             <p>
-            <strong>Food Type</strong>: {{food_type}}</p>
+            <strong>Food Type</strong>: {{food_type}}</p> --}}
           {{/each}}
             <a href="/">← Back To Home</a>
-            <a href="/events/add"> Add Event </a>
+            <br>
+            <a href="/newevent"> Add Event </a>
         </div>
       </div>
     </div>

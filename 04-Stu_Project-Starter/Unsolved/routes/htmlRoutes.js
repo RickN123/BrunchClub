@@ -2,17 +2,8 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  //Load index page
-  app.get("/events", function(req, res) {
-    db.Event.findAll({}).then(function(results) {
-      res.render("events", {
-        msg: "Welcome!",
-        Event: results
-      });
-    });
-  });
 
-  // Load event page and pass in an event by id
+//Load ALL Events Page
   app.get("/events/", function(req, res) {
     db.Event.findAll({}).then(function(results) {
       res.render("events", {
@@ -21,6 +12,7 @@ module.exports = function(app) {
     });
   });
 
+//Load One Event by ID
   app.get("/events/:id", function(req, res) {
     db.Event.findOne({
       where: {
@@ -33,19 +25,30 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/events/add", function(req, res) {
-    console.log("Add an Event");
-    
-        // }).then(function(results) {
+//Add New Event
+  app.get("/newevent", function(req,res) {
+    db.Event.findAll({
+      limit: 3
+    }).then(function(results) {
       res.render("add", {
-        msg: "ADDDDDAKJFKLJDFLK"
-
+        Event: results
       });
-    });
-  
-  
+  });
+});
 
-  // Render 404 page for any unmatched routes
+
+  // app.get("/events/add", function(req, res) {
+  //   console.log("Add an Event");
+    
+  //       // }).then(function(results) {
+  //     res.render("add", {
+  //       msg: "ADDDDDAKJFKLJDFLK"
+
+  //     });
+  //   });
+
+
+// Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");
   });

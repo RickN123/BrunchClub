@@ -9,6 +9,8 @@ module.exports = function(app) {
     });
   });
 
+
+
 //Create New Event
   app.post("/api/events", function(req, res) {
     db.Event.create({
@@ -20,14 +22,19 @@ module.exports = function(app) {
       neighborhood: req.body.neighborhood,
       food_type: req.body.food_type,
     }).then(function(results) {
-      res.json(results);
+      res.redirect("/events/");
+
 
     });
   });
 
 //Delete Event by id
   app.delete("/api/events/:id", function(req, res) {
-    db.Event.destroy({ where: { id: req.params.id } }).then(function(results) {
+    db.Event.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(results) {
       res.json(results);
     });
   });

@@ -26,13 +26,13 @@ var API = {
       url: "api/events",
       type: "GET"
     });
+  },
+  deleteEvent: function(id) {
+    return $.ajax({
+      url: "api/events/" + id,
+      type: "DELETE"
+    });
   }
-  // deleteEvent: function(id) {
-  //   return $.ajax({
-  //     url: "api/examples/" + id,
-  //     type: "DELETE"
-  //   });
-  // }
 };
 
 // refreshEvents gets new examples from the db and repopulates the list
@@ -91,10 +91,11 @@ var handleFormSubmit = function(event) {
 
   $eventVenue.val("");
   $eventTheme.val("");
-  $eventAddress.val("");
   $eventDateTime.val("");
-  $eventFoodType.val("");
   $eventSpecials.val("");
+  $eventAddress.val("");
+  $eventNeighborhood.val("");
+  $eventFoodType.val("");
   $eventList.val("");
   
 };
