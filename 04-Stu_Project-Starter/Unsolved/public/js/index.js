@@ -6,42 +6,44 @@ var $eventSpecials = $("#event-specials");
 var $eventAddress = $("#event-address");
 var $eventNeighborhood = $("#event-neighborhood");
 var $eventFoodType = $("#event-food-type");
-var $submitBtn = $("#submit");
+var $addNewEventBtn = $("#addNewEvent");
 var $eventList = $("#event-list");
 
+//===============================
 // The API object contains methods for each kind of request we'll make
 var API = {
-  saveEvent: function(event) {
+  saveEvent: function(newEvent) {
     return $.ajax({
-      headers: {
-        "Content-Type": "application/json"
-      },
+      // headers: {
+      //   "Content-Type": "application/json"
+      // },
       type: "POST",
-      url: "api/events",
-      data: JSON.stringify(event)
+      url: "/api/events",
+      data: newEvent
     });
   },
   getEvents: function() {
     return $.ajax({
-      url: "api/events",
+      url: "/api/events",
       type: "GET"
     });
   },
   deleteEvent: function(id) {
     return $.ajax({
-      url: "api/events/" + id,
+      url: "/api/events/" + id,
       type: "DELETE"
     });
   }
 };
 
+//===============================
 // refreshEvents gets new examples from the db and repopulates the list
 var refreshEvents = function() {
   API.getEvents().then(function(data) {
     var $events = data.map(function(event) {
       var $a = $("<a>")
-        .text(event.text)
-        .attr("href", "events" + event.id);
+        .text(event.venue)
+        .attr("href", "events/" + event.id);
 
       var $li = $("<li>")
         .attr({
@@ -64,15 +66,16 @@ var refreshEvents = function() {
   });
 };
 
+//===============================
 // handleFormSubmit is called whenever we submit a new event
 // Save the new event to the db and refresh the list
 var handleFormSubmit = function(event) {
   event.preventDefault();
-
+ console.log("hey");
   var event = {
     venue: $eventVenue.val().trim(),
     theme: $eventTheme.val().trim(),
-    date: $eventDateTime.val().trim(),
+    date_time: $eventDateTime.val().trim(),
     specials: $eventSpecials.val().trim(),
     address: $eventAddress.val().trim(),
     neighborhood: $eventNeighborhood.val().trim(),
@@ -80,26 +83,27 @@ var handleFormSubmit = function(event) {
   };
   console.log(event);
 
-  if (!(event.venue && event.theme)) {
-    alert("You must enter an event text and description!");
-    return;
-  }
+  // if (!(event.venue && event.theme)) {
+  //   alert("You must enter an event text and description!");
+  //   return;
+  // }
 
   API.saveEvent(event).then(function() {
     refreshEvents();
-  });
 
-  $eventVenue.val("");
-  $eventTheme.val("");
-  $eventDateTime.val("");
-  $eventSpecials.val("");
-  $eventAddress.val("");
-  $eventNeighborhood.val("");
-  $eventFoodType.val("");
-  $eventList.val("");
-  
+    $eventVenue.val("");
+    $eventTheme.val("");
+    $eventDateTime.val("");
+    $eventSpecials.val("");
+    $eventAddress.val("");
+    $eventNeighborhood.val("");
+    $eventFoodType.val("");
+    $eventList.val("");
+  });
+ 
 };
 
+//===============================
 // handleDeleteBtnClick is called when an event's delete button is clicked
 // Remove the event from the db and refresh the list
 var handleDeleteBtnClick = function() {
@@ -112,6 +116,7 @@ var handleDeleteBtnClick = function() {
   });
 };
 
+//===============================
 // Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
+$addNewEventBtn.click(handleFormSubmit);
 $eventList.on("click", ".delete", handleDeleteBtnClick);

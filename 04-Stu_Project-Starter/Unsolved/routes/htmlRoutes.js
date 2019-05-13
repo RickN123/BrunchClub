@@ -3,6 +3,7 @@ var db = require("../models");
 
 module.exports = function(app) {
 
+//===============================
 //Load ALL Events Page
   app.get("/events/", function(req, res) {
     db.Event.findAll({}).then(function(results) {
@@ -12,6 +13,7 @@ module.exports = function(app) {
     });
   });
 
+//===============================
 //Load One Event by ID
   app.get("/events/:id", function(req, res) {
     db.Event.findOne({
@@ -25,6 +27,7 @@ module.exports = function(app) {
     });
   });
 
+//===============================
 //Add New Event
   app.get("/newevent", function(req,res) {
     db.Event.findAll({
@@ -36,18 +39,7 @@ module.exports = function(app) {
   });
 });
 
-
-  // app.get("/events/add", function(req, res) {
-  //   console.log("Add an Event");
-    
-  //       // }).then(function(results) {
-  //     res.render("add", {
-  //       msg: "ADDDDDAKJFKLJDFLK"
-
-  //     });
-  //   });
-
-
+//===============================
 // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");

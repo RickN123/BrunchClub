@@ -2,3 +2,9 @@
   line-height: 2.5;
 }
 
+.add-link {
+  padding:10px;
+  border: 1px solid blue;
+  width: 200px;
+  text-align: center;
+}

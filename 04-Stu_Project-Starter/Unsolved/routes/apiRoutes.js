@@ -2,18 +2,23 @@
 var db = require("../models");
 
 module.exports = function(app) {
+
+//===============================
 //Get ALL Events
   app.get("/api/events", function(req, res) {
     db.Event.findAll({}).then(function(results) {
       res.json(results);
+
     });
   });
 
-
-
+//===============================
 //Create New Event
   app.post("/api/events", function(req, res) {
+    console.log(req.body);
+    console.log("hello");
     db.Event.create({
+     
       venue: req.body.venue,
       theme: req.body.theme,
       date_time: req.body.date_time,
@@ -23,11 +28,11 @@ module.exports = function(app) {
       food_type: req.body.food_type,
     }).then(function(results) {
       res.redirect("/events/");
-
-
+    
     });
   });
 
+//===============================
 //Delete Event by id
   app.delete("/api/events/:id", function(req, res) {
     db.Event.destroy({
@@ -36,9 +41,11 @@ module.exports = function(app) {
       }
     }).then(function(results) {
       res.json(results);
+
     });
   });
 
+//===============================
 //Update Event by id
   app.put("/api/events", function(req, res) {
     db.Event.update({
