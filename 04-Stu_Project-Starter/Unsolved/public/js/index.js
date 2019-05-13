@@ -9,6 +9,7 @@ var $eventFoodType = $("#event-food-type");
 var $addNewEventBtn = $("#addNewEvent");
 var $eventList = $("#event-list");
 
+
 //===============================
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -71,11 +72,11 @@ var refreshEvents = function() {
 // Save the new event to the db and refresh the list
 var handleFormSubmit = function(event) {
   event.preventDefault();
- console.log("hey");
+
   var event = {
     venue: $eventVenue.val().trim(),
     theme: $eventTheme.val().trim(),
-    date_time: $eventDateTime.val().trim(),
+    date_time: moment($eventDateTime.val()).format("MMMM Do YYYY, h:mm:ss"),
     specials: $eventSpecials.val().trim(),
     address: $eventAddress.val().trim(),
     neighborhood: $eventNeighborhood.val().trim(),
@@ -83,10 +84,10 @@ var handleFormSubmit = function(event) {
   };
   console.log(event);
 
-  // if (!(event.venue && event.theme)) {
-  //   alert("You must enter an event text and description!");
-  //   return;
-  // }
+  if (!(event.venue && event.theme)) {
+    alert("You must enter an valid event venue and description!");
+    return;
+  }
 
   API.saveEvent(event).then(function() {
     refreshEvents();

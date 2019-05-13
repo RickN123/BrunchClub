@@ -17,9 +17,14 @@
           </div>
 
           <div class="form-group">
-            <label for="event-text">Event Date and Time: </label>
-            <input type="text" id="event-date-time" class="form-control" aria-describedby="event-text" placeholder="Event Date/Time">
+            <label for="event-datetime">Event Date and Time: </label>
+            {{!-- <div class="col-10"> --}}
+              <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="event-date-time">
+            {{!-- </div> --}}
           </div>
+
+
+            {{!-- <input type="text" id="event-date-time" class="form-control" aria-describedby="event-text" placeholder="Event Date/Time"> --}}
 
           <div class="form-group">
             <label for="event-text">Food/Drink Specials: </label>
@@ -74,5 +79,7 @@
   </div>
 </div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <script src="/js/index.js"></script>
+
+

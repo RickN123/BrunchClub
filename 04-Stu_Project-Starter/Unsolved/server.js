@@ -3,6 +3,7 @@ var express = require("express");
 var exphbs = require("express-handlebars");
 
 var db = require("./models");
+var moment = require('moment');
 
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -25,7 +26,7 @@ app.set("view engine", "handlebars");
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
-var syncOptions = { force: true };
+var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true, clearing the `testdb`
 if (process.env.NODE_ENV === "test") {

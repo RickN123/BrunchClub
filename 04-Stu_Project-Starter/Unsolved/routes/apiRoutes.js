@@ -16,7 +16,7 @@ module.exports = function(app) {
 //Create New Event
   app.post("/api/events", function(req, res) {
     console.log(req.body);
-    console.log("hello");
+
     db.Event.create({
      
       venue: req.body.venue,
