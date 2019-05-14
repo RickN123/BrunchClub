@@ -10,7 +10,7 @@ var API = {
                 window.location.href = data.redirect;
             }
         }
-        });
+      });
     }
 };
 
