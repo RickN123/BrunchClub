@@ -76,7 +76,7 @@ var handleFormSubmit = function(event) {
   var event = {
     venue: $eventVenue.val().trim(),
     theme: $eventTheme.val().trim(),
-    date_time: moment($eventDateTime.val()).format("MMMM Do YYYY, h:mm:ss"),
+    date_time: moment($eventDateTime.val()).format("llll"),
     specials: $eventSpecials.val().trim(),
     address: $eventAddress.val().trim(),
     neighborhood: $eventNeighborhood.val().trim(),
