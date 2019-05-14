@@ -89,7 +89,9 @@ var handleFormSubmit = function(event) {
     return;
   }
 
-  API.saveEvent(event).then(function() {
+  API.saveEvent(event).then(function(results) {
+    console.log(results);
+
     refreshEvents();
 
     $eventVenue.val("");
@@ -100,8 +102,11 @@ var handleFormSubmit = function(event) {
     $eventNeighborhood.val("");
     $eventFoodType.val("");
     $eventList.val("");
+
+    window.location.href = "/events";
+    
   });
- 
+
 };
 
 //===============================

@@ -57,7 +57,7 @@
 
         <ul id="event-list" class="list-group">
 
-          {{#each Event}}
+          {{#each Event limit="3"}}
             {{!-- {{#if this.id}} --}}
 
               <li data-id="{{id}}" class="list-group-item">
@@ -81,5 +81,3 @@
 
 
 <script src="/js/index.js"></script>
-
-

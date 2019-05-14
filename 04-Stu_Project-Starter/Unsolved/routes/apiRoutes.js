@@ -27,7 +27,9 @@ module.exports = function(app) {
       neighborhood: req.body.neighborhood,
       food_type: req.body.food_type,
     }).then(function(results) {
-      res.redirect("/events/");
+      res.json(results);
+
+      // res.redirect("/events/");
     
     });
   });
@@ -39,8 +41,9 @@ module.exports = function(app) {
       where: {
         id: req.params.id
       }
-    }).then(function(results) {
-      res.json(results);
+    }).then(function() {
+      var data = {redirect: "/events/"};
+      res.json(data);
 
     });
   });
