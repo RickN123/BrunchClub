@@ -67,5 +67,12 @@ module.exports = function(app) {
 
     });
   });
-
+app.post("/api/register", function(req,res){
+  db.Register.create(
+    req.body
+  ).then(function(){
+    res.sendStatus(200);
+    
+  })
+})
 };
