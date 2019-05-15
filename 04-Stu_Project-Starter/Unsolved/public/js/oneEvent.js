@@ -36,7 +36,8 @@ $(".delete").click(function() {
   });
 });
 
-$(".register-user").click(function(event){
+
+$(".register-user").click(function(event) {
   event.preventDefault();
   var eventsDetails={
     name:$("#validationRegister-name").val().trim(),
@@ -44,9 +45,12 @@ $(".register-user").click(function(event){
     EventId:$(this).attr("data-id")
   }
  
-  API.registerUser(eventsDetails);
+  API.registerUser(eventsDetails).then(function() {
+    window.location.href = "/events/" + eventsDetails.EventId
+  });
+
   $("#exampleModal").modal("hide")
   if (!(eventsDetails.name && eventsDetails.email)){
     alert("You must enter your name and email to register")
   }
-})
+});

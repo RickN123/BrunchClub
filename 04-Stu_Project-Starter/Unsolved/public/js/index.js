@@ -38,8 +38,38 @@ var API = {
 };
 
 //===============================
-// refreshEvents gets new examples from the db and repopulates the list
+// refreshEvents gets new events from the db and repopulates the list
 var refreshEvents = function() {
+  API.getEvents().then(function(data) {
+    var $events = data.map(function(event) {
+      var $a = $("<a>")
+        .text(event.venue)
+        .attr("href", "events/" + event.id);
+
+      var $li = $("<li>")
+        .attr({
+          class: "list-group-item",
+          "data-id": event.id
+        })
+        .append($a);
+
+      var $button = $("<button>")
+        .addClass("btn btn-danger float-right delete")
+        .text("ｘ");
+
+      $li.append($button);
+
+      return $li;
+    });
+
+    $eventList.empty();
+    $eventList.append($events);
+  });
+};
+
+//===============================
+// refreshUsers gets new users from the db and repopulates the list
+var refreshUSERS = function() {
   API.getEvents().then(function(data) {
     var $events = data.map(function(event) {
       var $a = $("<a>")

@@ -1,14 +1,14 @@
 {
   "development": {
     "username": "root",
-    "password": null,
+    "password": "KendallJane87",
     "database": "brunchclub_db",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": null,
+    "password": "KendallJane87",
     "database": "testdb",
     "host": "localhost",
     "dialect": "mysql",

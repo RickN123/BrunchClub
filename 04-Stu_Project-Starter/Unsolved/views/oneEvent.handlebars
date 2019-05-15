@@ -17,77 +17,72 @@
               <p><strong>Neighborhood: </strong>{{Event.neighborhood}}</p>
               <p><strong>Food Type: </strong>{{Event.food_type}}
               
-              <button class="btn btn-danger float-right delete" data-id={{Event.id}}>ｘ</button></p>
+              <br>
+              <br>
 
-              {{!-- <br>
-              <hr>
-              <br> --}}
-              <div class="row">
-                <button type="button" class="btn btn-success d-flex justify-content-center" data-toggle="modal" data-target="#exampleModal"> RSVP</button>
-              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">RSVP for {{Event.theme}} at {{Event.venue}}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form class="needs-validation"></form>
-         <div class="form-group">
-            <label for="validationRegister-name">Enter Name </label>
-            <input type="text" id="validationRegister-name" class="form-control" aria-describedby="register-name" placeholder="Enter Name">
-            <div class="invalid-feedback">
-          Please choose a username.
-        </div>
-          </div>
-           <div class="form-group">
+          <div class="row">
+            <button type="button" class="btn btn-success d-flex justify-content-center" data-toggle="modal" data-target="#exampleModal"> RSVP </button>
+
+            <button class="btn btn-danger float-right delete" data-id={{Event.id}}> ｘ </button></p>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">RSVP for {{Event.theme}} at {{Event.venue}}</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+            <div class="modal-body">
+              <form class="needs-validation"></form>
+                <div class="form-group">
+                <label for="validationRegister-name">Enter Name </label>
+                <input type="text" id="validationRegister-name" class="form-control" aria-describedby="register-name" placeholder="Enter Name">
+              <div class="invalid-feedback">Please choose a username.
+              </div>
+              </div>
+          <div class="form-group">
             <label for="validationRegister-email">Enter Email </label>
             <input type="text" id="validationRegister-email" class="form-control" aria-describedby="register-email" placeholder="Enter Email">
-            <div class="invalid-feedback">
-          Please choose a username.
-        </div>
+            <div class="invalid-feedback">Please choose a username.
+            </div>
           </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary register-user" data-id={{Event.id}}>Register for Event</button>
-       
+            </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary register-user" data-id={{Event.id}}>Register for Event</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </form>
 </div>
-</form>
-              </div>
-              <br>
-              <hr>
-              <br>
 
+  <br>
+  <hr>
+  <br>
+    {{!-- <a href="/events">← Back To Events Page</a> --}}
+    <h5>Attending</h5>
+      {{#each Register}}
+        <ul>
+          <li>{{name}}</li>
+        </ul>
+      {{/each}}
 
-          {{!-- <a href="/events">← Back To Events Page</a> --}}
-              <h5>Attending</h5>
-            {{#each Register}}
-            <ul>
-              <li>{{name}}</li>
-            </ul>
-            {{/each}}
-
-        <a href="/events">← Back To Events Page</a>
-          {{!-- <a href="/newevent" class="add-link"> Add Event </a> --}}
+      <a href="/events">← Back To Events Page</a>
+      {{!-- <a href="/newevent" class="add-link"> Add Event </a> --}}
 
         </div>
       </div>
     </div>
   </div>
- 
-
-
 </div>
-
 
 <script src="/js/oneEvent.js"></script>
-<script>
+
+{{!-- <script>
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {
   'use strict';
@@ -106,4 +101,4 @@
     });
   }, false);
 })();
-</script>
+</script> --}}
